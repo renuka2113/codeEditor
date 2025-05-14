@@ -1,0 +1,36 @@
+{
+  "name": "code-editor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "concurrently \"vite\" \"electron .\"",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+        "electron": "^35.0.3",
+    "monaco-editor": "^0.52.2",
+    "concurrently": "^9.1.2",
+    "electron-builder": "^25.1.8",
+    "vite": "^6.2.2"
+  },
+  "files": [
+    "**/*",
+    "!node_modules/.bin",
+    "!node_modules/electron-builder"
+  ],
+  "win": {
+    "target": "nsis"
+  },
+  "mac": {
+    "target": "dmg"
+  },
+  "linux": {
+    "target": "AppImage"
+  }
+}

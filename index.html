@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offline Editor</title>
+    <!-- Include Monaco Editor CSS -->
+    <link
+      rel="stylesheet"
+      href="./node_modules/monaco-editor/min/vs/editor/editor.main.css"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background-color: #1e1e1e;
+        color: white;
+      }
+      #toolbar {
+        display: flex;
+        padding: 10px;
+        background: #222;
+      }
+      button {
+        margin-right: 10px;
+        padding: 8px 12px;
+        cursor: pointer;
+        background: #444;
+        border: none;
+        color: white;
+      }
+      #tabs {
+        display: flex;
+        background: #333;
+        padding: 5px;
+      }
+      .tab {
+        padding: 8px;
+        margin-right: 5px;
+        cursor: pointer;
+        background: #555;
+        color: white;
+        border-radius: 5px;
+      }
+      .tab:hover {
+        background: #777;
+      }
+      #editor {
+        flex: 1;
+      }
+      .tab {
+        padding: 8px;
+        margin-right: 5px;
+        cursor: pointer;
+        background: #555;
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+      }
+
+      .tab:hover {
+        background: #777;
+      }
+
+      .tab button {
+        margin-left: 5px;
+        font-size: 14px;
+        line-height: 1;
+        padding: 0 4px;
+      }
+      .active-tab {
+        background: #444;
+        font-weight: bold;
+        border-bottom: 2px solid #ffcc00;
+      }
+      #output-container {
+        padding: 10px;
+        background: #1e1e1e;
+        color: #d4d4d4;
+        border-top: 1px solid #333;
+        height: 200px;
+        overflow: auto;
+      }
+
+      #output {
+        white-space: pre-wrap;
+        font-family: monospace;
+        margin: 0;
+        padding: 10px;
+      }
+      .btn {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .btn:hover::after {
+        content: attr(data-shortcut);
+        position: absolute;
+        bottom: -25px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #333;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+
+      .btn:hover {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="toolbar">
+      <button id="open-btn" class="btn" data-shortcut="Ctrl+O">Open</button>
+      <button id="save-btn" class="btn" data-shortcut="Ctrl+S">Save</button>
+      <button id="run-btn" class="btn" data-shortcut="Ctrl+F5">Run Code</button>
+      <button id="new-btn" class="btn" data-shortcut="Ctrl+N">New</button>
+      
+    </div>
+    <div id="tabs"></div>
+    <div id="editor"></div>
+    <div id="output-container">
+      <h3>Output:</h3>
+      <pre id="output">No output yet...</pre>
+    </div>
+
+    <script type="module" src="/renderer.js"></script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+{
+  "name": "code-editor",
+  "version": "1.0.0",
+  "description": "A Monaco-based code editor with Electron",
+  "main": "main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"electron .\"",
+    "build": "vite build && electron-builder",
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+        "electron": "^35.0.3",
+    "monaco-editor": "^0.52.2",
+    "concurrently": "^9.1.2",
+    "electron-builder": "^25.1.8",
+    "vite": "^6.2.2"
+  },
+  "build": {
+    "extraResources": [
+      {
+        "from": "compilers",
+        "to": "compilers"
+      }
+    ],
+    "appId": "com.yourcompany.codeeditor",
+    "productName": "CodeEditor",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "main.js",
+      "preload.js",
+      "allcode-api/*",
+      "compilers/**/*",
+      "dist/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
